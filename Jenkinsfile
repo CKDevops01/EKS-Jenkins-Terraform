@@ -62,6 +62,22 @@ pipeline
             }
         }
 
+        stage('Deploying Two-Tier-Web-Application') {
+            steps{
+                script{
+                    dir('EKS/ConfigurationFiles') {
+                        sh 'aws eks update-kubeconfig --name ck-eks-n8xtyAPU'
+                        sh 'kubectl apply -f mysql-deployment.yml'
+                        sh 'kubectl apply -f mysql-configmap.yml'
+                        sh 'kubectl apply -f mysql-secrets.yml'
+                        sh 'kubectl apply -f mysql-svc.yml'
+                        sh 'kubectl apply -f two-tier-app-deployment.yml'
+                        sh 'kubectl apply -f two-tier-app-svc.yml'
+                    }
+                }
+            }
+        }
+
         
         
         
