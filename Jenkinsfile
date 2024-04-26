@@ -67,7 +67,7 @@ pipeline
                 script{
                     dir('EKS/ConfigurationFiles') {
                         sh 'aws eks update-kubeconfig --name ck-eks-n8xtyAPU'
-                        sh 'kubectl apply -f mysql-deployment.yml'
+                        sh 'kubectl apply -f mysql-deployment.yml --validate=false'
                         sh 'kubectl apply -f mysql-configmap.yml'
                         sh 'kubectl apply -f mysql-secrets.yml'
                         sh 'kubectl apply -f mysql-svc.yml'
