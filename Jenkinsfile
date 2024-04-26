@@ -9,8 +9,10 @@ pipeline
     }
     stages{
         stage('Git Checkout'){
-            script{
-                git branch:'main' ,url:'https://github.com/CKDevops01/EKS-Jenkins-Terraform.git'
+            steps{
+                script{
+                    git branch:'main' ,url:'https://github.com/CKDevops01/EKS-Jenkins-Terraform.git'
+        }
         }
         }
         stage('Initializing Terraform'){
